@@ -1,0 +1,74 @@
+[
+  {
+    "id": "INC-2024-0891",
+    "title": "Project Aegis Core Algorithm Exfiltration",
+    "category": "Intellectual Property Theft",
+    "incident_description": "On October 14, 2024, at 23:42 UTC, an external threat alert flagged an unauthorized 4.2 GB data transfer of the proprietary 'Project Aegis' codebase to an offshore IP address (198.51.100.44). Initial source control commits were tagged with Lead Engineer Alice Vance's credentials. However, automated workstation logs show conflicting login events from Bob Martin's terminal and unusual physical badge events.",
+    "ground_truth": {
+      "primary_responsible_party": "Mallory Price",
+      "role": "External Security Consultant / Contract Pentester",
+      "method": "Exploited Bob Martin's unlocked DevOps terminal WS-ENG-088 during an authorized after-hours maintenance window. Cloned Alice Vance's SSH key from a shared staging repo and forged git commit author headers before SFTP transfer to 198.51.100.44.",
+      "framed_individual": "Alice Vance",
+      "exonerating_evidence": [
+        "ACC-101",
+        "ACC-102"
+      ],
+      "incriminating_evidence": [
+        "ACC-103",
+        "LOG-201",
+        "LOG-202",
+        "LOG-203",
+        "MSG-301",
+        "MSG-302",
+        "EML-401"
+      ],
+      "policy_violation": "POL-SEC-04 (Unauthorized Code Export & Terminal Sharing)",
+      "verdict_type": "conclusive"
+    }
+  },
+  {
+    "id": "INC-2024-1142",
+    "title": "Unauthorized \u20b941,22,500 Wire Transfer & Vendor Tampering",
+    "category": "Financial Fraud & Policy Bypass",
+    "incident_description": "On November 3, 2024, Accounts Payable disbursed a \u20b941,22,500 wire transfer for invoice #INV-9921 to 'Apex-Cloud-Billing LLC' instead of established partner 'Apex Cloud Systems Inc.'. The transfer cleared without the mandatory VP secondary authorization required by corporate policy POL-FIN-12. The finance department flagged the transaction 48 hours later during monthly reconciliation.",
+    "ground_truth": {
+      "primary_responsible_party": "David Chen",
+      "role": "Accounts Payable Specialist",
+      "method": "Bypassed mandatory dual-authorization policy POL-FIN-12 using a spoofed executive email as pretext. While claiming to be a victim of BEC fraud, digital forensic audit revealed an illicit cryptocurrency kickback of 5,000 USDT received three days prior from an affiliate linked to the fraudulent shell company.",
+      "exonerating_evidence": [],
+      "incriminating_evidence": [
+        "POL-FIN-12",
+        "EML-501",
+        "TRX-601",
+        "MSG-602",
+        "TRX-602",
+        "MTG-701"
+      ],
+      "policy_violation": "POL-FIN-12 (Dual Approval Required for Disbursements \u2265 \u20b98,50,000)",
+      "verdict_type": "conclusive"
+    }
+  },
+  {
+    "id": "INC-2024-1405",
+    "title": "Critical Production Outage and Audit Log Truncation",
+    "category": "Infrastructure Outage & Ambiguous Log Loss",
+    "incident_description": "On December 12, 2024, between 02:14 and 02:45 UTC, the primary US-East Kubernetes cluster suffered an unrecoverable failure resulting in 31 minutes of total customer downtime. Concurrently, all security audit log files for that 31-minute window were wiped from the primary S3 bucket. System administrators cannot determine whether this was deliberate sabotage by a disgruntled staff member or a catastrophic cascading failure of automated maintenance scripts.",
+    "ground_truth": {
+      "primary_responsible_party": "INCONCLUSIVE / SYSTEM RACE CONDITION (UNRESOLVED)",
+      "role": "Automated Service Accounts & System Administration",
+      "method": "Direct telemetry attributes the cluster failure to a race condition between Jenkins automated failover rehearsal and Docker storage pruner clean_logs.sh. However, because S3 audit logs during 02:14-02:45 were completely erased by svc-k8s-daemon, insider sabotage by DBA Marcus Brody cannot be mathematically ruled out, nor can it be proven.",
+      "exonerating_evidence": [
+        "LOG-805",
+        "LOG-806"
+      ],
+      "incriminating_evidence": [
+        "LOG-801",
+        "LOG-802",
+        "LOG-803",
+        "MSG-804"
+      ],
+      "policy_violation": "POL-OPS-03 (Change Management Freeze & WORM Storage Enforcement)",
+      "verdict_type": "insufficient_evidence"
+    }
+  }
+]
